@@ -1,1 +1,0 @@
-# hc-cloud-gateway
