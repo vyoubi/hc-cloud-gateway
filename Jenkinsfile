@@ -29,11 +29,18 @@ pipeline {
                 sh 'docker push valere1991/hc-cloud-gateway'
             }
         }
-        stage("remove unused docker image"){
-            steps{
+        stage("remove unused docker image") {
+            steps {
             sh 'docker rmi hc-cloud-gateway -f'
             sh 'docker rmi valere1991/hc-cloud-gateway -f'
          }
+        }
+        stage('Deploy to k8s') {
+            steps {
+                script {
+                    kubernetesDeploy (configs: 'deploymentservice.yaml', kubeconfigId: 'k8sconfigpwd')
+                }
+            }
         }
     }
 }
