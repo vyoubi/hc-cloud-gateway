@@ -4,8 +4,6 @@ metadata:
   name: hc-cloud-gateway
   labels:
     app: hc-cloud-gateway
-  annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::783837532578:role/test-oidc
 spec:
   replicas: 1
   selector:
