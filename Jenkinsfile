@@ -35,12 +35,6 @@ pipeline {
             sh 'docker rmi valere1991/hc-cloud-gateway -f'
          }
         }
-        stage('Deploy to k8s') {
-            steps {
-                script {
-                    kubernetesDeploy (configs: 'deploymentservice.yaml', kubeconfigId: 'k8sval')
-                }
-            }
-        }
+
     }
 }
