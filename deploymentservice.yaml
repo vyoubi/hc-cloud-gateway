@@ -5,7 +5,7 @@ metadata:
   labels:
     app: hc-cloud-gateway
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: hc-cloud-gateway
