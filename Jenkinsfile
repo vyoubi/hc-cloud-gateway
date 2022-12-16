@@ -35,6 +35,5 @@ pipeline {
             sh 'docker rmi valere1991/hc-cloud-gateway -f'
          }
         }
-
     }
 }
