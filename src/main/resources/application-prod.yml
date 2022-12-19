@@ -41,6 +41,7 @@ spring:
               - DELETE
               - OPTIONS
             allowedHeaders: "Authorization, Content-Type, X-token, Role, x-requested-with, if-modified-since, x-requested-by"
+            Access-Control-Allow-Credentials: true
       routes:
         - id: EMPLOYEE-SERVICE
           uri: lb://EMPLOYEE-SERVICE
