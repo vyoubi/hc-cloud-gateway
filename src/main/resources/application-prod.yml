@@ -131,7 +131,6 @@ eureka:
     service-url:
       defaultZone: http://af799cbd9e05549758b7c3059ec8616e-745050297.eu-west-2.elb.amazonaws.com/eureka/
   instance:
-    instance-id: ${spring.application.name}:${random.uuid}
     prefer-ip-address: true
-
+    instance-id: ${spring.application.name}:${random.uuid}
 
