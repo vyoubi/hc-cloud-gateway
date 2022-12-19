@@ -32,7 +32,7 @@ spring:
       globalcors:
         corsConfigurations:
           '[/**]':
-            allowedOrigins: "http://my-s3bucket-20221215105543827400000001.s3-website.eu-central-1.amazonaws.com"
+            allowedOrigins: "http://a7c25898957164f709668a8747f45614-1191296837.eu-west-2.elb.amazonaws.com"
             allowedMethods:
               - GET
               - PUT
