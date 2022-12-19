@@ -128,7 +128,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://a5aa0680ebf0642bcb4b9230fe9d7eb4-377402015.eu-central-1.elb.amazonaws.com/eureka/
+      defaultZone: http://a92101966bb674fb6912f323664f3fe9-942682767.eu-west-2.elb.amazonaws.com/eureka/
   instance:
     instance-id: ${spring.application.name}:${random.uuid}
     prefer-ip-address: true
