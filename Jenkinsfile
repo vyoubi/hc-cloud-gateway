@@ -6,12 +6,6 @@ pipeline {
     environment {
         DOCKER_TAG = "${BUILD_NUMBER}"
     }
-    options {
-      buildDiscarder logRotator(
-                  daysToKeepStr: '16',
-                  numToKeepStr: '10'
-          )
-  }
     stages {
         stage('Build Maven') {
             steps {
