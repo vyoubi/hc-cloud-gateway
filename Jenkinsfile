@@ -3,6 +3,15 @@ pipeline {
     tools {
         maven 'MAVEN-3.8.4'
     }
+    environment {
+        DOCKER_TAG = "${BUILD_NUMBER}"
+    }
+    options {
+      buildDiscarder logRotator(
+                  daysToKeepStr: '16',
+                  numToKeepStr: '10'
+          )
+  }
     stages {
         stage('Build Maven') {
             steps {
@@ -13,8 +22,9 @@ pipeline {
         stage('Build docker image') {
             steps {
                 sh 'docker version'
-                sh 'docker build -t valere1991/hc-cloud-gateway .'
+                sh 'docker build -t hc-cloud-gateway .'
                 sh 'docker image list'
+                sh 'docker tag hc-cloud-gateway valere1991/hc-cloud-gateway:${DOCKER_TAG}'
             }
         }
         stage('Docker Hub login') {
@@ -26,13 +36,13 @@ pipeline {
         }
         stage('Push image to Docker Hub') {
             steps {
-                sh 'docker push valere1991/hc-cloud-gateway'
+                sh 'docker push valere1991/hc-cloud-gateway:${DOCKER_TAG}'
             }
         }
         stage("remove unused docker image") {
             steps {
             sh 'docker rmi hc-cloud-gateway -f'
-            sh 'docker rmi valere1991/hc-cloud-gateway -f'
+            sh 'docker rmi valere1991/hc-cloud-gateway:${DOCKER_TAG} -f'
          }
         }
     }
