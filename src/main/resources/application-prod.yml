@@ -24,9 +24,6 @@ spring:
 #            redirect-uri: "http://localhost:5000/login/oauth2/code/hc-spring-cloud-gateway-client"
   cloud:
     gateway:
-      discovery:
-        locator:
-          lower-case-service-id: true
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
       globalcors:
