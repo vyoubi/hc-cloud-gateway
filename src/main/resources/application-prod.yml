@@ -103,9 +103,6 @@ spring:
               args:
                 name: NOTIFICATION-SERVICE
                 fallbackuri: forward:/notificationServiceFallBack
-    loadbalancer:
-      ribbon:
-        enabled: false
 
 hystrix:
   command:
@@ -122,12 +119,12 @@ management:
         include: hystrix.stream
 
 eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://af799cbd9e05549758b7c3059ec8616e-745050297.eu-west-2.elb.amazonaws.com/eureka/
   instance:
-    prefer-ip-address: true
+    preferIpAddress: true
     instance-id: ${spring.application.name}:${random.uuid}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://af799cbd9e05549758b7c3059ec8616e-745050297.eu-west-2.elb.amazonaws.com/eureka/
 
