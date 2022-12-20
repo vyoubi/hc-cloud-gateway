@@ -10,16 +10,6 @@ import java.security.Principal;
 @RequestMapping
 public class FallBackMethodController {
 
-    @GetMapping("EmployeeServiceFallBack")
-    public String playerServiceFallBackMethod() {
-        return "Player Service is taking longer than expected. " + "Please try again later";
-    }
-
-    @GetMapping("departmentServiceFallBack")
-    public String nationalityServiceFallBackMethod() {
-        return "Department Service is taking longer than expected. " + "Please try again later";
-    }
-
     @GetMapping("productServiceFallBack")
     public String productServiceFallBackMethod() {
         return "Product Service is taking longer than expected. " + "Please try again later";
@@ -43,6 +33,11 @@ public class FallBackMethodController {
     @GetMapping("notificationServiceFallBack")
     public String notificationServiceFallBackMethod() {
         return "Send notification is taking longer than expected. " + "Please try again later";
+    }
+
+    @GetMapping("hystrixDashboardFallBack")
+    public String hystrixDashboardFallBackMethod() {
+        return "Hystrix Dashboard is taking longer than expected. " + "Please try again later";
     }
 
     @GetMapping("/")

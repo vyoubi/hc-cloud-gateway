@@ -40,24 +40,6 @@ spring:
             allowedHeaders: "Authorization, Content-Type, X-token, Role, x-requested-with, if-modified-since, x-requested-by"
             Access-Control-Allow-Credentials: true
       routes:
-        - id: EMPLOYEE-SERVICE
-          uri: lb://EMPLOYEE-SERVICE
-          predicates:
-            - Path=/api/employees/**
-          filters:
-            - name: CircuitBreaker
-              args:
-                name: EMPLOYEE-SERVICE
-                fallbackuri: forward:/employeeServiceFallBack
-        - id: DEPARTMENT-SERVICE
-          uri: lb://DEPARTMENT-SERVICE
-          predicates:
-            - Path=/api/departments/**
-          filters:
-            - name: CircuitBreaker
-              args:
-                name: DEPARTMENT-SERVICE
-                fallbackuri: forward:/departmentServiceFallBack
         - id: PRODUCT-SERVICE
           uri: lb://PRODUCT-SERVICE
           predicates:
@@ -103,6 +85,15 @@ spring:
               args:
                 name: NOTIFICATION-SERVICE
                 fallbackuri: forward:/notificationServiceFallBack
+        - id: HYSTRIX-DASHBOARD
+          uri: lb://HYSTRIX-DASHBOARD
+          predicates:
+            - Path=/api/hystrix/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: HYSTRIX-DASHBOARD
+                fallbackuri: forward:/hystrixDashboardFallBack
 
 hystrix:
   command:
@@ -121,7 +112,6 @@ management:
 eureka:
   instance:
     preferIpAddress: true
-    instance-id: ${spring.application.name}:${random.uuid}
   client:
     registerWithEureka: true
     fetchRegistry: true
